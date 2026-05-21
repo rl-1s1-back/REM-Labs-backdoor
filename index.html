@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REM-Labs // SECURE PORTAL</title>
+<style>
+body {
+background-color: #050505;
+color: #00e5ff;
+font-family: 'Courier New', Courier, monospace;
+/* Жесткое центрирование по вертикали и горизонтали /
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+overflow: hidden;
+}
+.terminal {
+width: 100%;
+max-width: 450px; / Сделали окно чуть компактнее для эстетики */
+border: 1px solid #00e5ff;
+padding: 30px;
+box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+background: rgba(0, 20, 25, 0.95);
+box-sizing: border-box;
+}
+h1 {
+font-size: 1.2rem;
+text-align: center;
+border-bottom: 1px dashed #00e5ff;
+padding-bottom: 10px;
+letter-spacing: 2px;
+margin-top: 0;
+}
+.input-group {
+margin: 20px 0;
+}
+label {
+display: block;
+margin-bottom: 8px;
+color: #a0a0a0;
+font-size: 0.9rem;
+}
+input {
+width: 100%;
+background: transparent;
+border: none;
+border-bottom: 1px solid #00e5ff;
+color: #ffcc00;
+font-family: 'Courier New', Courier, monospace;
+font-size: 1.1rem;
+padding: 5px 0;
+outline: none;
+box-sizing: border-box;
+}
+button {
+width: 100%;
+background: #00e5ff;
+color: #050505;
+border: none;
+padding: 12px;
+font-family: 'Courier New', Courier, monospace;
+font-weight: bold;
+font-size: 1rem;
+cursor: pointer;
+margin-top: 10px;
+transition: background 0.3s;
+letter-spacing: 1px;
+}
+button:hover {
+background: #ffcc00;
+}
+.error {
+color: #ff003c;
+margin-top: 15px;
+text-align: center;
+height: 20px;
+font-size: 0.9rem;
+}
+#success-screen {
+display: none;
+color: #a0a0a0;
+line-height: 1.5;
+}
+#success-screen p {
+margin: 10px 0;
+}
+.highlight {
+color: #ffcc00;
+}
+.download-btn {
+display: block;
+text-align: center;
+background: #ffcc00;
+color: #050505;
+text-decoration: none;
+padding: 12px;
+font-weight: bold;
+margin-top: 25px;
+border: 1px solid #ffcc00;
+transition: 0.3s;
+}
+.download-btn:hover {
+background: transparent;
+color: #ffcc00;
+}
+</style>
+</head>
+<body>
+
+<!-- Экран логина -->
+<div class="terminal" id="login-screen">
+<h1>REM-LABS // АВТОРИЗАЦИЯ</h1>
+<div class="input-group">
+<label>ID СОТРУДНИКА (ЛОГИН):</label>
+<input type="text" id="username" autocomplete="off" spellcheck="false">
+</div>
+<div class="input-group">
+<label>КЛЮЧ ДОСТУПА (ПАРОЛЬ):</label>
+<input type="password" id="password">
+</div>
+<button onclick="checkAuth()">ВОЙТИ В СИСТЕМУ</button>
+<div class="error" id="error-msg"></div>
+</div>
+
+<!-- Экран успеха -->
+<div class="terminal" id="success-screen">
+<h1 class="highlight">ДОСТУП РАЗРЕШЕН</h1>
+<p>Добро пожаловать, <span class="highlight">RL-1s¹</span>.</p>
+<p>Если ты читаешь это, значит, ты смог обойти базовую защиту. У нас мало времени. Они отслеживают этот IP.</p>
+<p>Я успел выгрузить первый пакет данных из Желтой зоны. Скачай архив, пока они не закрыли порт.</p>
+
+<!-- Ссылка на скачивание архива -->
+<a href="archive_q-link.zip" download class="download-btn">[ СКАЧАТЬ АРХИВ DATA_01 ]</a>
+</div>
+
+<script>
+function checkAuth() {
+var user = document.getElementById('username').value.trim();
+var pass = document.getElementById('password').value.trim();
+var errorMsg = document.getElementById('error-msg');
+
+// Принимает RL-1s¹ и RL-1s1, пароль 1008
+if ((user === "RL-1s¹"  user === "RL-1s1"  user.toUpperCase() === "RL-1S1") && pass === "1008") {
+document.getElementById('login-screen').style.display = 'none';
+document.getElementById('success-screen').style.display = 'block';
+} else {
+errorMsg.innerText = "ОШИБКА: ДАННЫЕ НЕ СОВПАДАЮТ";
+setTimeout(() => { errorMsg.innerText = ""; }, 3000);
+}
+}
+</script>
+
+</body>
+</html>
